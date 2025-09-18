@@ -1,0 +1,24 @@
+version: "3.9"
+services:
+  backend:
+    build:
+      context: ./backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - backend_artifacts:/app/app/ml/artifacts
+      - backend_db:/app
+    environment:
+      - DATABASE_URL=sqlite:///./app.db
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "5173:5173"
+    environment:
+      - VITE_API_URL=http://localhost:8000
+    depends_on:
+      - backend
+volumes:
+  backend_artifacts:
+  backend_db:

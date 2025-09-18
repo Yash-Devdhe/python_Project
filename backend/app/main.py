@@ -5,6 +5,8 @@ from .auth.router import router as auth_router
 from .upload.router import router as upload_router
 from .analytics.router import router as analytics_router
 from .reporting.router import router as reporting_router
+from .classify.router import router as classify_router
+from .feedback.router import router as feedback_router
 
 app = FastAPI(title="Smart E-Commerce Analytics API", version="0.1.0")
 
@@ -28,3 +30,5 @@ app.include_router(auth_router)
 app.include_router(upload_router)
 app.include_router(analytics_router)
 app.include_router(reporting_router)
+app.include_router(classify_router)
+app.include_router(feedback_router)
